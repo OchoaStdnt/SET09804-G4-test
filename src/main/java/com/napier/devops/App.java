@@ -1,6 +1,6 @@
 /**
  *  Add description of app here
- *  docker-compose run --service-ports app
+ *  Use "docker-compose run app" to get the interactive menu
  */
 
 package com.napier.devops;
