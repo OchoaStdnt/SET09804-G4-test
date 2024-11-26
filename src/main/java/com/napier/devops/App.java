@@ -1,25 +1,20 @@
-package com.napier.devops;
-
-//import java.sql.*;
-
-/*
-will call all features from a separate files to keep the coding clean
+/**
+ *  Add description of app here
+ *  docker-compose run --service-ports app
  */
+
+package com.napier.devops;
+import java.sql.*;
 
 public class App {
     public static void main(String[] args) {
-        // Create new Application
-       // App a = new App();      //will use to call menu
 
-        //create new instance from Connect class
-        Connect c = new Connect();
+        App a = new App();
 
-        // Connect to database
-        c.connect();
+        //New instance for Menu class
+        Menu m = new Menu();
 
-        //a.displayWorldDBTables()
-
-        // Disconnect from database
-        c.disconnect();
+        m.menu();
     }
 }
+
