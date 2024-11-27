@@ -5,6 +5,7 @@ public class Methods {
 
     private Connection con = null;
 
+    /* add colors to the system out */
     final String RESET = "\u001B[0m";
     final String BLUE = "\u001B[34m";
     final String GREEN = "\u001B[32m";
