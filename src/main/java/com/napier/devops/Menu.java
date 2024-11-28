@@ -41,11 +41,11 @@ public class Menu {
             System.out.println("10. All Cities by Country (United States) from largest to smallest");    //Added by John Chimezie
             System.out.println("11. All Cities by District (Kabol) from largest to smallest");    //Added by John Chimezie
 
-            //System.out.println("12. Top Populated Cities in World from largest to smallest");    //Added by John Chimezie
-            //System.out.println("13. Top Populated Cities by Continent (Asia) from largest to smallest");    //Added by Angel Ochoa
-            //System.out.println("14. Top Populated Cities by Region (Caribbean) from largest to smallest");    //Added by Angel Ochoa
-            //System.out.println("15. Top Populated Cities by Country (United States) from largest to smallest");  //Added by Bernard Young COMPLETED
-            //System.out.println("16. Top Populated Cities by District (Kabol) from largest to smallest");  //Added by Bernard Young
+            System.out.println("12. Top Populated Cities in World from largest to smallest");    //Added by John Chimezie
+            System.out.println("13. Top Populated Cities by Continent (Asia) from largest to smallest");    //Added by Angel Ochoa
+            System.out.println("14. Top Populated Cities by Region (Caribbean) from largest to smallest");    //Added by Angel Ochoa
+            System.out.println("15. Top Populated Cities by Country (United States) from largest to smallest");  //Added by Bernard Young COMPLETED
+            System.out.println("16. Top Populated Cities by District (Kabol) from largest to smallest");  //Added by Bernard Young
 
             //System.out.println("17. All Capital Cities in World from largest to smallest");  //Added by Bernard Young
             //System.out.println("18. All Capital Cities by Continent (Asia) from largest to smallest");  //Added by Bernard Young
@@ -107,9 +107,19 @@ public class Menu {
                     break;
 
                 case 12: //John Chimezie
-
+                    m.topPopCitiesInWorld();
+                    break;
+                case 13: //Angel Ochoa
+                    m.topPopCitiesbyContinent();
+                    break;
+                case 14: //Angel Ochoa
+                    m.topPopCitiesbyRegion();
+                    break;
                 case 15: //Bernard Young
                     m.topPopCitiesByCountry();
+                    break;
+                case 16: //Bernard Young
+                    m.topPopCitiesByDistrict();
                     break;
 
                 case 21: //Kenneth Ramirez
