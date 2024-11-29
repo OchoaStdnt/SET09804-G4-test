@@ -25,6 +25,8 @@ public class Menu {
             /* Menu */
             System.out.println();   //Blank line
             System.out.println(GREEN + "Enter the # of the Report you want to run and press 'Enter':" + RESET);   //start of menu.
+            System.out.println(GREEN + "Note all reports are displayed in order of population from largest to smallest." + RESET);   //start of menu.
+            System.out.println(GREEN + "-------------------------------------------------------------------------------" + RESET);   //start of menu.
 
             /* Menu Options */
             System.out.println("1. All Countries in World from largest to smallest");   //Added by Angel Ochoa COMPLETED
@@ -47,17 +49,17 @@ public class Menu {
             System.out.println("15. Top Populated Cities by Country (United States) from largest to smallest");  //Added by Bernard Young COMPLETED
             System.out.println("16. Top Populated Cities by District (Kabol) from largest to smallest");  //Added by Bernard Young
 
-            //System.out.println("17. All Capital Cities in World from largest to smallest");  //Added by Bernard Young
-            //System.out.println("18. All Capital Cities by Continent (Asia) from largest to smallest");  //Added by Bernard Young
-            //System.out.println("19. All Capital Cities by Region (Caribbean) from largest to smallest");  //Added by Bernard Young
+            System.out.println("17. All Capital Cities in World from largest to smallest");  //Added by Bernard Young
+            System.out.println("18. All Capital Cities by Continent (Asia) from largest to smallest");  //Added by Bernard Young
+            System.out.println("19. All Capital Cities by Region (Caribbean) from largest to smallest");  //Added by Bernard Young
 
-            //System.out.println("20. Top Populated Capital Cities by World from largest to smallest");  //Added by Angel Ochoa
-            //System.out.println("21. Top Populated Capital Cities by Continent (Asia) from largest to smallest");  //Added by Kenneth Ramirez COMPLETED
-            //System.out.println("22. Top Populated Capital Cities by Region (Southeast Asia) from largest to smallest");  //Added by Kenneth Ramirez
+            System.out.println("20. Top Populated Capital Cities by World from largest to smallest");  //Added by Angel Ochoa
+            System.out.println("21. Top Populated Capital Cities by Continent (Asia) from largest to smallest");  //Added by Kenneth Ramirez COMPLETED
+            System.out.println("22. Top Populated Capital Cities by Region (Southeast Asia) from largest to smallest");  //Added by Kenneth Ramirez
 
-            //System.out.println("23. The population of people, people in Cities, and people not living in cities by each Continent");  //Added by Kenneth Ramirez
-            //System.out.println("24. The population of people, people in Cities, and people not living in cities by each Region");  //Added by Kenneth Ramirez
-            //System.out.println("25. The population of people, people in Cities, and people not living in cities by each Country");  //Added by Kenneth Ramirez
+            System.out.println("23. The population of people, people in Cities, and people not living in cities by each Continent");  //Added by Kenneth Ramirez
+            System.out.println("24. The population of people, people in Cities, and people not living in cities by each Region");  //Added by Kenneth Ramirez
+            System.out.println("25. The population of people, people in Cities, and people not living in cities by each Country");  //Added by Kenneth Ramirez
 
             /* Exit Menu/Application */
             System.out.println("0. Exit");  //Added by Angel Ochoa
@@ -122,8 +124,34 @@ public class Menu {
                     m.topPopCitiesByDistrict();
                     break;
 
+                case 17: //Bernard Young
+                    m.allCapCitiesWorld();
+                    break;
+                case 18: //Bernard Young
+                    m.allCapCitiesByContinent();
+                    break;
+                case 19: //Bernard Young
+                    m.allCapCitiesByRegion();
+                    break;
+
+                case 20: //Angel Ochoa
+                    m.topPopCapitalCitiesWorld();
+                    break;
                 case 21: //Kenneth Ramirez
                     m.topPopCapitalCitiesByContinent();
+                    break;
+                case 22: //Kenneth Ramirez
+                    m.topPopCapitalCitiesByRegion();
+                    break;
+
+                case 23: //Kenneth Ramirez
+                    m.popOfPplPplCitiesPplNotCityByContinent();
+                    break;
+                case 24: //Kenneth Ramirez
+                    m.popOfPplPplCitiesPplNotCityByRegion();
+                    break;
+                case 25: //Kenneth Ramirez
+                    m.popOfPplPplCitiesPplNotCityByCountry();
                     break;
 
                 /* exit */
