@@ -61,6 +61,15 @@ public class Menu {
             System.out.println("24. The population of people, people in Cities, and people not living in cities by each Region");  //Added by Kenneth Ramirez
             System.out.println("25. The population of people, people in Cities, and people not living in cities by each Country");  //Added by Kenneth Ramirez
 
+            System.out.println("26. The population of the World");  //Added by Angel Ochoa
+            System.out.println("27. The population of a Continent (Asia)");  //Added by Angel Ochoa
+            System.out.println("28. The population of a Region (Western Europe)");  //Added by Angel Ochoa
+            System.out.println("29. The population of a Country (France)");  //Added by Angel Ochoa
+            System.out.println("30. The population of a District (California)");  //Added by Angel Ochoa
+            System.out.println("31. The population of a City (Tokyo)");  //Added by Angel Ochoa
+
+            System.out.println("32. The population that speak Chinese, English, Hindi, Spanish, and Arabic");  //Added by Angel Ochoa
+
             /* Exit Menu/Application */
             System.out.println("0. Exit");  //Added by Angel Ochoa
 
@@ -152,6 +161,29 @@ public class Menu {
                     break;
                 case 25: //Kenneth Ramirez
                     m.popOfPplPplCitiesPplNotCityByCountry();
+                    break;
+
+                case 26: //Angel Ochoa
+                    m.popOfWorld();
+                    break;
+                case 27: //Angel Ochoa
+                    m.popOfContinent();
+                    break;
+                case 28: //Angel Ochoa
+                    m.popOfRegion();
+                    break;
+                case 29: //Angel Ochoa
+                    m.popOfCountry();
+                    break;
+                case 30: //Angel Ochoa
+                    m.popOfDistrict();
+                    break;
+                case 31: //Angel Ochoa
+                    m.popOfCity();
+                    break;
+
+                case 32: //Angel Ochoa
+                    m.popOfLang();
                     break;
 
                 /* exit */
