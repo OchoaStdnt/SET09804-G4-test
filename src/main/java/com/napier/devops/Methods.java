@@ -1,5 +1,6 @@
 package com.napier.devops;
 import java.sql.*;
+import java.util.Scanner;
 
 public class Methods {
 
@@ -157,6 +158,7 @@ public class Methods {
     //-------------- Method 4 - Top populated countries in world ------------------
     //-------------- Donisio Rash --------------------
     public void topPopCountriesInWorld() {
+        int userVal = getNum(); // for N value
         try {
             /* Create an SQL statement */
             Statement stmt = con.createStatement();
@@ -171,7 +173,7 @@ public class Methods {
                             + "Capital "
                             + "FROM country "
                             + "ORDER BY Population DESC "
-                            + "LIMIT 10";   //limit display
+                            + "LIMIT " + userVal;   //limit display
             /* Execute SQL statement */
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -202,6 +204,7 @@ public class Methods {
     //-------------- Method 5 - Top populated countries by Continent ------------------
     //-------------- Donisio Rash --------------------
     public void topPopCountriesByContinent() {
+        int userVal = getNum(); // for N value
         try {
             /* Create an SQL statement */
             Statement stmt = con.createStatement();
@@ -217,7 +220,7 @@ public class Methods {
                             + "FROM country "
                             + "WHERE Continent = 'Asia' "   //Asia can be changed to another Continent
                             + "ORDER BY Population DESC "
-                            + "LIMIT 10";   //limit display
+                            + "LIMIT " + userVal;   //limit display
             /* Execute SQL statement */
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -248,6 +251,7 @@ public class Methods {
     //-------------- Method 6 - Top populated countries by Region ------------------
     //-------------- Donisio Rash --------------------
     public void topPopCountriesByRegion() {
+        int userVal = getNum(); // for N value
         try {
             /* Create an SQL statement */
             Statement stmt = con.createStatement();
@@ -263,7 +267,7 @@ public class Methods {
                             + "FROM country "
                             + "WHERE Region = 'Caribbean' "   //Caribbean can be changed to another Region
                             + "ORDER BY Population DESC "
-                            + "LIMIT 10";   //limit display
+                            + "LIMIT " + userVal;   //limit display
             /* Execute SQL statement */
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -519,6 +523,7 @@ public class Methods {
     //-------------- John Chimezie --------------------
     public void topPopCitiesInWorld()
     {
+        int userVal = getNum(); // for N value
         try
         {
             // Create an SQL statement
@@ -533,7 +538,7 @@ public class Methods {
                             + "FROM city ci "
                             + "JOIN country c ON ci.CountryCode = c.Code "
                             + "ORDER BY ci.Population DESC "
-                            + "LIMIT 5";
+                            + "LIMIT " + userVal;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -564,6 +569,7 @@ public class Methods {
     //-------------- Angel Ochoa --------------------
     public void topPopCitiesbyContinent()
     {
+        int userVal = getNum(); // for N value
         try
         {
             // Create an SQL statement
@@ -579,7 +585,7 @@ public class Methods {
                             + "JOIN country c ON ci.CountryCode = c.Code "
                             + "WHERE c.Continent = 'Asia' " //Asia can be changed
                             + "ORDER BY ci.Population DESC "
-                            + "LIMIT 5";    //limit display
+                            + "LIMIT " + userVal;    //limit display
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -610,6 +616,7 @@ public class Methods {
     //-------------- Angel Ochoa --------------------
     public void topPopCitiesbyRegion()
     {
+        int userVal = getNum(); // for N value
         try
         {
             // Create an SQL statement
@@ -625,7 +632,7 @@ public class Methods {
                             + "JOIN country c ON ci.CountryCode = c.Code "
                             + "WHERE c.Region = 'Caribbean' " //Caribbean can be changed
                             + "ORDER BY ci.Population DESC "
-                            + "LIMIT 5";    //limit display
+                            + "LIMIT " + userVal;    //limit display
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -656,6 +663,7 @@ public class Methods {
     //-------------- Bernard Daniel Young --------------------
     public void topPopCitiesByCountry()
     {
+        int userVal = getNum(); // for N value
         try
         {
             // Create an SQL statement
@@ -671,7 +679,7 @@ public class Methods {
                             + "JOIN country c ON ci.CountryCode = c.Code "
                             + "WHERE c.Name = 'United States' "   //United States can be changed to another Country
                             + "ORDER BY ci.Population DESC "
-                            + "LIMIT 5";    //limit display
+                            + "LIMIT " + userVal;    //limit display
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -702,6 +710,7 @@ public class Methods {
     //-------------- Bernard Daniel Young --------------------
     public void topPopCitiesByDistrict()
     {
+        int userVal = getNum(); // for N value
         try
         {
             // Create an SQL statement
@@ -717,7 +726,7 @@ public class Methods {
                             + "JOIN country c ON ci.CountryCode = c.Code "
                             + "WHERE ci.District = 'Kabol' "   //Kabol can be changed
                             + "ORDER BY ci.Population DESC "
-                            + "LIMIT 5";    //limit display
+                            + "LIMIT " + userVal;    //limit display
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -876,6 +885,7 @@ public class Methods {
     //-------------- Angel Ochoa --------------------
     public void topPopCapitalCitiesWorld()
     {
+        int userVal = getNum(); // for N value
         try
         {
             // Create an SQL statement
@@ -889,7 +899,7 @@ public class Methods {
                             + "FROM country c "
                             + "JOIN city ci ON c.Capital = ci.ID "
                             + "ORDER BY ci.Population DESC "
-                            + "LIMIT 10";    //limit N display
+                            + "LIMIT " + userVal;    //limit N display
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -919,6 +929,7 @@ public class Methods {
     //-------------- Kenneth Ramirez --------------------
     public void topPopCapitalCitiesByContinent()
     {
+        int userVal = getNum(); // for N value
         try
         {
             // Create an SQL statement
@@ -933,7 +944,7 @@ public class Methods {
                             + "JOIN city ci ON c.Capital = ci.ID "
                             + "WHERE c.Continent = 'Asia' "   //Asia can be changed to another Continent
                             + "ORDER BY ci.Population DESC "
-                            + "LIMIT 5";    //limit N display
+                            + "LIMIT " + userVal;    //limit N display
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -963,6 +974,7 @@ public class Methods {
     //-------------- Kenneth Ramirez --------------------
     public void topPopCapitalCitiesByRegion()
     {
+        int userVal = getNum(); // for N value
         try
         {
             // Create an SQL statement
@@ -977,7 +989,7 @@ public class Methods {
                             + "JOIN city ci ON c.Capital = ci.ID "
                             + "WHERE c.Region = 'Southeast Asia' "   //Southeast Asia can be changed
                             + "ORDER BY ci.Population DESC "
-                            + "LIMIT 5";    //limit N display
+                            + "LIMIT " + userVal;    //limit N display
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -1566,4 +1578,34 @@ public class Methods {
         }
     }
     //-------------------END Disconnect from DB---------------------------
+//}
+
+    //-----------User input for N--------------
+    public static int getNum()
+    {
+        final String RESET = "\u001B[0m";
+        final String GREEN = "\u001B[32m";
+        final String RED = "\u001B[31m";
+        Scanner userEnt = new Scanner(System.in);
+        int numEnt = -1;
+
+        while (true) {
+            try {
+                System.out.print(GREEN + "Enter # of rows to display:" + RESET);
+                numEnt = userEnt.nextInt();
+                if (numEnt < 0) {
+                    System.out.println(RED + "Error: Enter a number starting from '1'." + RESET);
+                }
+                else {
+                    break;
+                }
+            } catch (Exception e) {
+                System.out.println(RED + "Error: Enter a number starting from '1'." + RESET);
+                userEnt.nextLine();
+            }
+        }
+
+        return numEnt;
+    }
+    // -----------END input for N
 }
