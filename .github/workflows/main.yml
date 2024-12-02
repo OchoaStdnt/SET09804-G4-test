@@ -17,7 +17,7 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn package
-      - name: Run docker compose
-        env:
-          USER_INPUT: 0 
-        run: docker compose up --abort-on-container-exit
+      - name: Run docker compose with USER_INPUT=0 # this is so the action does not stay waiting for a user input. the 0 exits the application.
+        run: |
+          echo "USER_INPUT=0" > .env
+          docker compose up --abort-on-container-exit
