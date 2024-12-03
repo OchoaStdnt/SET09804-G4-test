@@ -1,229 +1,24 @@
-/**
- *  Add description of app here
- *  Use "docker-compose run app" to get the interactive menuFDFD
- */
+//DFAWDFASDFASDF
+
+
 
 package com.napier.devops;
 import java.sql.*;
 import java.util.Scanner;
 
-public class App {
-    public static void main(String[] args) {
+public class Methods {
 
-        App a = new App();
-
-        menu();
-    }
-
-    public static void menu()
-    {
-        /* Connect to DB */
-        connect();
-
-        /* add colors to the system out */
-        final String RESET = "\u001B[0m";
-        final String GREEN = "\u001B[32m";
-        final String RED = "\u001B[31m";
-        final String YELLOW = "\u001B[33m";
-
-        /* to accept user choices */
-        Scanner userInput = new Scanner(System.in);
-        int userChoice; //to save the option by the user
-
-        do {
-            /* Menu */
-            System.out.println();   //Blank line
-            System.out.println(GREEN + "Enter the # of the Report you want to run and press 'Enter':" + RESET);   //start of menu.
-            System.out.println(GREEN + "Note all reports are displayed in order of population from largest to smallest." + RESET);   //start of menu.
-            System.out.println(GREEN + "-------------------------------------------------------------------------------" + RESET);   //start of menu.
-
-            /* Menu Options */
-            System.out.println("1. All Countries in World from largest to smallest");   //Added by Angel Ochoa COMPLETED
-            System.out.println("2. All Countries by Continent (Asia) from largest to smallest");  //Added by Donisio Rash COMPLETED
-            System.out.println("3. All Countries by Region (Caribbean) from largest to smallest");  //Added by Donisio Rash
-
-            System.out.println("4. Top Populated Countries in World from largest to smallest");  //Added by Donisio Rash
-            System.out.println("5. Top Populated Countries by Continent (Asia) from largest to smallest");  //Added by Donisio Rash
-            System.out.println("6. Top Populated Countries by Region (Caribbean) from largest to smallest");  //Added by Donisio Rash
-
-            System.out.println("7. All Cities in World from largest to smallest");    //Added by Angel Ochoa
-            System.out.println("8. All Cities by Continent (Asia) from largest to smallest");    //Added by John Chimezie COMPLETED
-            System.out.println("9. All Cities by Region (Caribbean) from largest to smallest");    //Added by John Chimezie
-            System.out.println("10. All Cities by Country (United States) from largest to smallest");    //Added by John Chimezie
-            System.out.println("11. All Cities by District (Kabol) from largest to smallest");    //Added by John Chimezie
-
-            System.out.println("12. Top Populated Cities in World from largest to smallest");    //Added by John Chimezie
-            System.out.println("13. Top Populated Cities by Continent (Asia) from largest to smallest");    //Added by Angel Ochoa
-            System.out.println("14. Top Populated Cities by Region (Caribbean) from largest to smallest");    //Added by Angel Ochoa
-            System.out.println("15. Top Populated Cities by Country (United States) from largest to smallest");  //Added by Bernard Young COMPLETED
-            System.out.println("16. Top Populated Cities by District (Kabol) from largest to smallest");  //Added by Bernard Young
-
-            System.out.println("17. All Capital Cities in World from largest to smallest");  //Added by Bernard Young
-            System.out.println("18. All Capital Cities by Continent (Asia) from largest to smallest");  //Added by Bernard Young
-            System.out.println("19. All Capital Cities by Region (Caribbean) from largest to smallest");  //Added by Bernard Young
-
-            System.out.println("20. Top Populated Capital Cities by World from largest to smallest");  //Added by Angel Ochoa
-            System.out.println("21. Top Populated Capital Cities by Continent (Asia) from largest to smallest");  //Added by Kenneth Ramirez COMPLETED
-            System.out.println("22. Top Populated Capital Cities by Region (Southeast Asia) from largest to smallest");  //Added by Kenneth Ramirez
-
-            System.out.println("23. The population of people, people in Cities, and people not living in cities by each Continent");  //Added by Kenneth Ramirez
-            System.out.println("24. The population of people, people in Cities, and people not living in cities by each Region");  //Added by Kenneth Ramirez
-            System.out.println("25. The population of people, people in Cities, and people not living in cities by each Country");  //Added by Kenneth Ramirez
-
-            System.out.println("26. The population of the World");  //Added by Angel Ochoa
-            System.out.println("27. The population of a Continent (Asia)");  //Added by Angel Ochoa
-            System.out.println("28. The population of a Region (Western Europe)");  //Added by Angel Ochoa
-            System.out.println("29. The population of a Country (France)");  //Added by Angel Ochoa
-            System.out.println("30. The population of a District (California)");  //Added by Angel Ochoa
-            System.out.println("31. The population of a City (Tokyo)");  //Added by Angel Ochoa
-
-            System.out.println("32. The population that speak Chinese, English, Hindi, Spanish, and Arabic");  //Added by Angel Ochoa
-
-            /* Exit Menu/Application */
-            System.out.println("0. Exit");  //Added by Angel Ochoa
-
-            /* Test DB */
-            System.out.println(YELLOW + "1234. TEST DATABASE (Show Tables on World DB)" + RESET);   //Added by Angel Ochoa
-            userChoice = userInput.nextInt();   //Read user input
-            userInput.nextLine();   //Save the user input
-            System.out.println();   //Blank line
-
-            switch (userChoice) {
-                /* Reports */
-                case 1: //Angel Ochoa
-                    allCountriesByPop();
-                    break;
-                case 2: //Donisio Rash
-                    countriesByContinent();
-                    break;
-                case 3: //Donisio Rash
-                    countriesByRegion();
-                    break;
-
-                case 4: //Donisio Rash
-                    topPopCountriesInWorld();
-                    break;
-                case 5: //Donisio Rash
-                    topPopCountriesByContinent();
-                    break;
-                case 6: //Donisio Rash
-                    topPopCountriesByRegion();
-                    break;
-
-                case 7: //Angel Ochoa
-                    citiesByWorld();
-                    break;
-                case 8: //John Chimezie
-                    citiesByContinent();
-                    break;
-                case 9: //John Chimezie
-                    citiesByRegion();
-                    break;
-                case 10: //John Chimezie
-                    citiesByCountry();
-                    break;
-                case 11: //John Chimezie
-                    citiesByDistrict();
-                    break;
-
-                case 12: //John Chimezie
-                    topPopCitiesInWorld();
-                    break;
-                case 13: //Angel Ochoa
-                    topPopCitiesbyContinent();
-                    break;
-                case 14: //Angel Ochoa
-                    topPopCitiesbyRegion();
-                    break;
-                case 15: //Bernard Young
-                    topPopCitiesByCountry();
-                    break;
-                case 16: //Bernard Young
-                    topPopCitiesByDistrict();
-                    break;
-
-                case 17: //Bernard Young
-                    allCapCitiesWorld();
-                    break;
-                case 18: //Bernard Young
-                    allCapCitiesByContinent();
-                    break;
-                case 19: //Bernard Young
-                    allCapCitiesByRegion();
-                    break;
-
-                case 20: //Angel Ochoa
-                    topPopCapitalCitiesWorld();
-                    break;
-                case 21: //Kenneth Ramirez
-                    topPopCapitalCitiesByContinent();
-                    break;
-                case 22: //Kenneth Ramirez
-                    topPopCapitalCitiesByRegion();
-                    break;
-
-                case 23: //Kenneth Ramirez
-                    popOfPplPplCitiesPplNotCityByContinent();
-                    break;
-                case 24: //Kenneth Ramirez
-                    popOfPplPplCitiesPplNotCityByRegion();
-                    break;
-                case 25: //Kenneth Ramirez
-                    popOfPplPplCitiesPplNotCityByCountry();
-                    break;
-
-                case 26: //Angel Ochoa
-                    popOfWorld();
-                    break;
-                case 27: //Angel Ochoa
-                    popOfContinent();
-                    break;
-                case 28: //Angel Ochoa
-                    popOfRegion();
-                    break;
-                case 29: //Angel Ochoa
-                    popOfCountry();
-                    break;
-                case 30: //Angel Ochoa
-                    popOfDistrict();
-                    break;
-                case 31: //Angel Ochoa
-                    popOfCity();
-                    break;
-
-                case 32: //Angel Ochoa
-                    popOfLang();
-                    break;
-
-                /* exit */
-                case 0:
-                    System.out.println(RED + "Exiting..." + RESET);
-                    disconnect();
-                    break;
-
-                /* Test DB */
-                case 1234:
-                    showWorldDBTables();
-                    break;
-
-                default:
-                    System.out.println("Invalid entry, try again.");
-            }
-        } while (userChoice != 0);
-        userInput.close();
-    }
-
-    private static Connection con = null;
+    private Connection con = null;
 
     /* add colors to the system out */
-    static final String RESET = "\u001B[0m";
-    static final String BLUE = "\u001B[34m";
-    static final String GREEN = "\u001B[32m";
-    static final String RED = "\u001B[31m";
+    final String RESET = "\u001B[0m";
+    final String BLUE = "\u001B[34m";
+    final String GREEN = "\u001B[32m";
+    final String RED = "\u001B[31m";
 
     //-------------- Method 1 - All Countries by Population ------------------
     //-------------- Angel Ochoa --------------------
-    public static void allCountriesByPop()
+    public void allCountriesByPop()
     {
         try
         {
@@ -270,7 +65,7 @@ public class App {
 
     //-------------- Method 2 - All countries by continent (Using Asia)------------------
     //-------------- Donisio Rash --------------------
-    public static void countriesByContinent()
+    public void countriesByContinent()
     {
         try
         {
@@ -280,14 +75,14 @@ public class App {
             String strSelect =
                     /* SQL query */
                     "SELECT Code, "
-                            + "Name AS country_name, "
-                            + "Continent, "
-                            + "Region, "
-                            + "Population, "
-                            + "Capital "
-                            + "FROM country "
-                            + "WHERE Continent = 'Asia' "   //Asia can be changed to another Continent
-                            + "ORDER BY Population DESC";
+                        + "Name AS country_name, "
+                        + "Continent, "
+                        + "Region, "
+                        + "Population, "
+                        + "Capital "
+                        + "FROM country "
+                        + "WHERE Continent = 'Asia' "   //Asia can be changed to another Continent
+                        + "ORDER BY Population DESC";
             /* Execute SQL statement */
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -318,7 +113,7 @@ public class App {
 
     //-------------- Method 3 - All countries by Region ------------------
     //-------------- Donisio Rash --------------------
-    public static void countriesByRegion()
+    public void countriesByRegion()
     {
         try
         {
@@ -366,7 +161,7 @@ public class App {
 
     //-------------- Method 4 - Top populated countries in world ------------------
     //-------------- Donisio Rash --------------------
-    public static void topPopCountriesInWorld() {
+    public void topPopCountriesInWorld() {
         int userVal = getNum(); // for N value
         try {
             /* Create an SQL statement */
@@ -412,7 +207,7 @@ public class App {
 
     //-------------- Method 5 - Top populated countries by Continent ------------------
     //-------------- Donisio Rash --------------------
-    public static void topPopCountriesByContinent() {
+    public void topPopCountriesByContinent() {
         int userVal = getNum(); // for N value
         try {
             /* Create an SQL statement */
@@ -459,7 +254,7 @@ public class App {
 
     //-------------- Method 6 - Top populated countries by Region ------------------
     //-------------- Donisio Rash --------------------
-    public static void topPopCountriesByRegion() {
+    public void topPopCountriesByRegion() {
         int userVal = getNum(); // for N value
         try {
             /* Create an SQL statement */
@@ -506,7 +301,7 @@ public class App {
 
     //-------------- Method 7 - All Cities in World ------------------
     //-------------- Angel Ochoa --------------------
-    public static void citiesByWorld()
+    public void citiesByWorld()
     {
         try
         {
@@ -550,7 +345,7 @@ public class App {
 
     //-------------- Method 8 - All Cities by Continent ------------------
     //-------------- John Chimezie --------------------
-    public static void citiesByContinent()
+    public void citiesByContinent()
     {
         try
         {
@@ -595,7 +390,7 @@ public class App {
 
     //-------------- Method 9 - All All Cities by Region ------------------
     //-------------- John Chimezie --------------------
-    public static void citiesByRegion()
+    public void citiesByRegion()
     {
         try
         {
@@ -640,7 +435,7 @@ public class App {
 
     //-------------- Method 10 - All All Cities by Country ------------------
     //-------------- John Chimezie --------------------
-    public static void citiesByCountry()
+    public void citiesByCountry()
     {
         try
         {
@@ -685,7 +480,7 @@ public class App {
 
     //-------------- Method 11 - All Cities by District ------------------
     //-------------- John Chimezie --------------------
-    public static void citiesByDistrict()
+    public void citiesByDistrict()
     {
         try
         {
@@ -730,7 +525,7 @@ public class App {
 
     //-------------- Method 12 - Top Populated Cities in World ------------------
     //-------------- John Chimezie --------------------
-    public static void topPopCitiesInWorld()
+    public void topPopCitiesInWorld()
     {
         int userVal = getNum(); // for N value
         try
@@ -776,7 +571,7 @@ public class App {
 
     //-------------- Method 13 - Top Populated Cities by Continent ------------------
     //-------------- Angel Ochoa --------------------
-    public static void topPopCitiesbyContinent()
+    public void topPopCitiesbyContinent()
     {
         int userVal = getNum(); // for N value
         try
@@ -823,7 +618,7 @@ public class App {
 
     //-------------- Method 14 - Top Populated Cities by Region ------------------
     //-------------- Angel Ochoa --------------------
-    public static void topPopCitiesbyRegion()
+    public void topPopCitiesbyRegion()
     {
         int userVal = getNum(); // for N value
         try
@@ -870,7 +665,7 @@ public class App {
 
     //-------------- Method 15 - Top Populated Cities by Country ------------------
     //-------------- Bernard Daniel Young --------------------
-    public static void topPopCitiesByCountry()
+    public void topPopCitiesByCountry()
     {
         int userVal = getNum(); // for N value
         try
@@ -917,7 +712,7 @@ public class App {
 
     //-------------- Method 16 - Top Populated Cities by District ------------------
     //-------------- Bernard Daniel Young --------------------
-    public static void topPopCitiesByDistrict()
+    public void topPopCitiesByDistrict()
     {
         int userVal = getNum(); // for N value
         try
@@ -964,7 +759,7 @@ public class App {
 
     //-------------- Method 17 - All Capital Cities in World ------------------
     //-------------- Bernard Daniel Young --------------------
-    public static void allCapCitiesWorld()
+    public void allCapCitiesWorld()
     {
         try
         {
@@ -1006,7 +801,7 @@ public class App {
 
     //-------------- Method 18 - All Capital Cities by Continent ------------------
     //-------------- Bernard Daniel Young --------------------
-    public static void allCapCitiesByContinent()
+    public void allCapCitiesByContinent()
     {
         try
         {
@@ -1049,7 +844,7 @@ public class App {
 
     //-------------- Method 19 - All Capital Cities by Region ------------------
     //-------------- Bernard Daniel Young --------------------
-    public static void allCapCitiesByRegion()
+    public void allCapCitiesByRegion()
     {
         try
         {
@@ -1092,7 +887,7 @@ public class App {
 
     //-------------- Method 20 - Top Populated Capital Cities in world ------------------
     //-------------- Angel Ochoa --------------------
-    public static void topPopCapitalCitiesWorld()
+    public void topPopCapitalCitiesWorld()
     {
         int userVal = getNum(); // for N value
         try
@@ -1136,7 +931,7 @@ public class App {
 
     //-------------- Method 21 - Top Populated capital Cities by Continent ------------------
     //-------------- Kenneth Ramirez --------------------
-    public static void topPopCapitalCitiesByContinent()
+    public void topPopCapitalCitiesByContinent()
     {
         int userVal = getNum(); // for N value
         try
@@ -1181,7 +976,7 @@ public class App {
 
     //-------------- Method 22 - Top Populated Capital Cities by Region ------------------
     //-------------- Kenneth Ramirez --------------------
-    public static void topPopCapitalCitiesByRegion()
+    public void topPopCapitalCitiesByRegion()
     {
         int userVal = getNum(); // for N value
         try
@@ -1226,7 +1021,7 @@ public class App {
 
     //-------------- Method 23 - Population of people, people in cities, people not in cities by Continent ------------------
     //-------------- Kenneth Ramirez --------------------
-    public static void popOfPplPplCitiesPplNotCityByContinent()
+    public void popOfPplPplCitiesPplNotCityByContinent()
     {
         try
         {
@@ -1241,10 +1036,10 @@ public class App {
                             + "SUM(c.Population) - SUM(ci.CityPopulation) AS rural_population "
                             + "FROM country c "
                             + "LEFT JOIN "
-                            + "(SELECT ct.CountryCode, "
-                            + "SUM(ct.Population) AS CityPopulation "
-                            + "FROM city ct "
-                            + "GROUP BY ct.CountryCode) ci ON c.Code = ci.CountryCode "
+                                + "(SELECT ct.CountryCode, "
+                                + "SUM(ct.Population) AS CityPopulation "
+                                + "FROM city ct "
+                                + "GROUP BY ct.CountryCode) ci ON c.Code = ci.CountryCode "
                             + "GROUP BY c.Continent";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -1274,7 +1069,7 @@ public class App {
 
     //-------------- Method 24 - Population of people, people in cities, people not in cities by Region ------------------
     //-------------- Kenneth Ramirez --------------------
-    public static void popOfPplPplCitiesPplNotCityByRegion()
+    public void popOfPplPplCitiesPplNotCityByRegion()
     {
         try
         {
@@ -1289,10 +1084,10 @@ public class App {
                             + "SUM(c.Population) - SUM(ci.CityPopulation) AS rural_population "
                             + "FROM country c "
                             + "LEFT JOIN "
-                            + "(SELECT ct.CountryCode, "
-                            + "SUM(ct.Population) AS CityPopulation "
-                            + "FROM city ct "
-                            + "GROUP BY ct.CountryCode) ci ON c.Code = ci.CountryCode "
+                                + "(SELECT ct.CountryCode, "
+                                + "SUM(ct.Population) AS CityPopulation "
+                                + "FROM city ct "
+                                + "GROUP BY ct.CountryCode) ci ON c.Code = ci.CountryCode "
                             + "GROUP BY c.Region";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -1322,7 +1117,7 @@ public class App {
 
     //-------------- Method 25 - Population of people, people in cities, people not in cities by Country ------------------
     //-------------- Kenneth Ramirez --------------------
-    public static void popOfPplPplCitiesPplNotCityByCountry()
+    public void popOfPplPplCitiesPplNotCityByCountry()
     {
         try
         {
@@ -1337,10 +1132,10 @@ public class App {
                             + "c.Population - COALESCE(ci.CityPopulation, 0) AS rural_population "
                             + "FROM country c "
                             + "LEFT JOIN "
-                            + "(SELECT ct.CountryCode, "
-                            + "SUM(ct.Population) AS CityPopulation "
-                            + "FROM city ct "
-                            + "GROUP BY ct.CountryCode) ci ON c.Code = ci.CountryCode";
+                                + "(SELECT ct.CountryCode, "
+                                + "SUM(ct.Population) AS CityPopulation "
+                                + "FROM city ct "
+                                + "GROUP BY ct.CountryCode) ci ON c.Code = ci.CountryCode";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -1369,7 +1164,7 @@ public class App {
 
     //-------------- Method 26 - Population of the world ------------------
     //-------------- Angel Ochoa --------------------
-    public static void popOfWorld()
+    public void popOfWorld()
     {
         try
         {
@@ -1414,7 +1209,7 @@ public class App {
 
     //-------------- Method 27 - Population of a Continent ------------------
     //-------------- Angel Ochoa --------------------
-    public static void popOfContinent()
+    public void popOfContinent()
     {
         try
         {
@@ -1463,7 +1258,7 @@ public class App {
 
     //-------------- Method 28 - Population of a region ------------------
     //-------------- Angel Ochoa --------------------
-    public static void popOfRegion()
+    public void popOfRegion()
     {
         try
         {
@@ -1512,7 +1307,7 @@ public class App {
 
     //-------------- Method 29 - Population of a Country ------------------
     //-------------- Angel Ochoa --------------------
-    public static void popOfCountry()
+    public void popOfCountry()
     {
         try
         {
@@ -1561,7 +1356,7 @@ public class App {
 
     //-------------- Method 30 - Population of a District ------------------
     //-------------- Angel Ochoa --------------------
-    public static void popOfDistrict()
+    public void popOfDistrict()
     {
         try
         {
@@ -1609,7 +1404,7 @@ public class App {
 
     //-------------- Method 31 - Population of a City ------------------
     //-------------- Angel Ochoa --------------------
-    public static void popOfCity()
+    public void popOfCity()
     {
         try
         {
@@ -1656,7 +1451,7 @@ public class App {
 
     //-------------- Method 32 - The population that speak Chinese, English, Hindi, Spanish, and Arabic ------------------
     //-------------- Angel Ochoa --------------------
-    public static void popOfLang()
+    public void popOfLang()
     {
         try
         {
@@ -1703,7 +1498,7 @@ public class App {
 
 
     //-------------------------Connect to DB----------------------------
-    public static void connect()
+    public void connect()
     {
         try
         {
@@ -1746,7 +1541,7 @@ public class App {
 
     //-------------- Test DB ------------------
     //-------------- Angel Ochoa --------------------
-    public static void showWorldDBTables()
+    public void showWorldDBTables()
     {
         try
         {
@@ -1771,7 +1566,7 @@ public class App {
     //------------------ END Test DB ------------------------------
 
     //-----------------Disconnect from DB-------------------------
-    public static void disconnect()
+    public void disconnect()
     {
         if (con != null)
         {
@@ -1816,8 +1611,5 @@ public class App {
 
         return numEnt;
     }
-    // -----------END input for N-------------
-
-
+    // -----------END input for N
 }
-
