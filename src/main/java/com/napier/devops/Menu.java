@@ -1,17 +1,26 @@
-//;dsfgawefasdfasdF
-
+/**
+ *  This file contains the Menu that will load once App.java starts up.
+ *  The menu contains the several Options to Run the reports. A total of 32 Options are available to run.
+ *  The two extra Options "0" and "1234" are for Exiting the Application and testing connection to the DB respectively
+ *  Colors were added to the Headings of the Menu and the reports as well as when the App connects to the DB and Exits the Application.
+ *  This was done for better readability of the running app in a Terminal
+ */
 package com.napier.devops;
-
 import java.util.Scanner;
 
 public class Menu {
-    //App a = new App();
+    /* New instance for Menu class */
     Methods m = new Methods();
 
     public void menu()
     {
         /* Connect to DB */
-        m.connect();
+       m.connect();
+
+        /* LAB 7 test not working */
+       // m.connectToDatabase(args);
+
+
 
         /* add colors to the system out */
         final String RESET = "\u001B[0m";
@@ -26,9 +35,10 @@ public class Menu {
         do {
             /* Menu */
             System.out.println();   //Blank line
-            System.out.println(GREEN + "Enter the # of the Report you want to run and press 'Enter':" + RESET);   //start of menu.
-            System.out.println(GREEN + "Note all reports are displayed in order of population from largest to smallest." + RESET);   //start of menu.
-            System.out.println(GREEN + "-------------------------------------------------------------------------------" + RESET);   //start of menu.
+            System.out.println(GREEN + "***********************************************************************************" + RESET);   //start of menu.
+            System.out.println(GREEN + "* Enter the # of the Report you want to run and press 'Enter':                    *" + RESET);   //start of menu.
+            System.out.println(GREEN + "* Note all reports are displayed in order of population from largest to smallest. *" + RESET);   //start of menu.
+            System.out.println(GREEN + "***********************************************************************************" + RESET);   //start of menu.
 
             /* Menu Options */
             System.out.println("1. All Countries in World from largest to smallest");   //Added by Angel Ochoa COMPLETED
@@ -49,6 +59,7 @@ public class Menu {
             System.out.println("13. Top Populated Cities by Continent (Asia) from largest to smallest");    //Added by Angel Ochoa
             System.out.println("14. Top Populated Cities by Region (Caribbean) from largest to smallest");    //Added by Angel Ochoa
             System.out.println("15. Top Populated Cities by Country (United States) from largest to smallest");  //Added by Bernard Young COMPLETED
+
             System.out.println("16. Top Populated Cities by District (Kabol) from largest to smallest");  //Added by Bernard Young
 
             System.out.println("17. All Capital Cities in World from largest to smallest");  //Added by Bernard Young
@@ -58,6 +69,10 @@ public class Menu {
             System.out.println("20. Top Populated Capital Cities by World from largest to smallest");  //Added by Angel Ochoa
             System.out.println("21. Top Populated Capital Cities by Continent (Asia) from largest to smallest");  //Added by Kenneth Ramirez COMPLETED
             System.out.println("22. Top Populated Capital Cities by Region (Southeast Asia) from largest to smallest");  //Added by Kenneth Ramirez
+
+            System.out.println("23. The population of people, people in Cities, and people not living in cities by each Continent");  //Added by Kenneth Ramirez
+            System.out.println("24. The population of people, people in Cities, and people not living in cities by each Region");  //Added by Kenneth Ramirez
+            System.out.println("25. The population of people, people in Cities, and people not living in cities by each Country");  //Added by Kenneth Ramirez
 
             System.out.println("23. The population of people, people in Cities, and people not living in cities by each Continent");  //Added by Kenneth Ramirez
             System.out.println("24. The population of people, people in Cities, and people not living in cities by each Region");  //Added by Kenneth Ramirez
@@ -77,8 +92,10 @@ public class Menu {
 
             /* Test DB */
             System.out.println(YELLOW + "1234. TEST DATABASE (Show Tables on World DB)" + RESET);   //Added by Angel Ochoa
+
             userChoice = userInput.nextInt();   //Read user input
             userInput.nextLine();   //Save the user input
+            //--------------------------------------------------------------
             System.out.println();   //Blank line
 
             switch (userChoice) {
@@ -131,6 +148,7 @@ public class Menu {
                 case 15: //Bernard Young
                     m.topPopCitiesByCountry();
                     break;
+
                 case 16: //Bernard Young
                     m.topPopCitiesByDistrict();
                     break;

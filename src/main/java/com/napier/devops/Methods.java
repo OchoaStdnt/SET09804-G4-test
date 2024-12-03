@@ -1,6 +1,10 @@
-//DFAWDFASDFASDF
-
-
+/**
+ *  This file contains all the Methods that are called from the App.java file and the Menu.java.
+ *  Methods in this file are all the 32 reports called from the Menu.java.
+ *  Other methods here are for connecting and disconnecting to the World DB.
+ *  Methods for accepting a user input that is passed on some methods to limit display of reports.
+ *  A method to test connection to the database by showing tables of world DB
+ */
 
 package com.napier.devops;
 import java.sql.*;
@@ -75,14 +79,14 @@ public class Methods {
             String strSelect =
                     /* SQL query */
                     "SELECT Code, "
-                        + "Name AS country_name, "
-                        + "Continent, "
-                        + "Region, "
-                        + "Population, "
-                        + "Capital "
-                        + "FROM country "
-                        + "WHERE Continent = 'Asia' "   //Asia can be changed to another Continent
-                        + "ORDER BY Population DESC";
+                            + "Name AS country_name, "
+                            + "Continent, "
+                            + "Region, "
+                            + "Population, "
+                            + "Capital "
+                            + "FROM country "
+                            + "WHERE Continent = 'Asia' "   //Asia can be changed to another Continent
+                            + "ORDER BY Population DESC";
             /* Execute SQL statement */
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -109,7 +113,7 @@ public class Methods {
             throw new RuntimeException(e);
         }
     }
-    //------------------ END Method 2 ------------------------------
+    //------------------ END Method 2 ------------------------------\
 
     //-------------- Method 3 - All countries by Region ------------------
     //-------------- Donisio Rash --------------------
@@ -1036,10 +1040,10 @@ public class Methods {
                             + "SUM(c.Population) - SUM(ci.CityPopulation) AS rural_population "
                             + "FROM country c "
                             + "LEFT JOIN "
-                                + "(SELECT ct.CountryCode, "
-                                + "SUM(ct.Population) AS CityPopulation "
-                                + "FROM city ct "
-                                + "GROUP BY ct.CountryCode) ci ON c.Code = ci.CountryCode "
+                            + "(SELECT ct.CountryCode, "
+                            + "SUM(ct.Population) AS CityPopulation "
+                            + "FROM city ct "
+                            + "GROUP BY ct.CountryCode) ci ON c.Code = ci.CountryCode "
                             + "GROUP BY c.Continent";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -1084,10 +1088,10 @@ public class Methods {
                             + "SUM(c.Population) - SUM(ci.CityPopulation) AS rural_population "
                             + "FROM country c "
                             + "LEFT JOIN "
-                                + "(SELECT ct.CountryCode, "
-                                + "SUM(ct.Population) AS CityPopulation "
-                                + "FROM city ct "
-                                + "GROUP BY ct.CountryCode) ci ON c.Code = ci.CountryCode "
+                            + "(SELECT ct.CountryCode, "
+                            + "SUM(ct.Population) AS CityPopulation "
+                            + "FROM city ct "
+                            + "GROUP BY ct.CountryCode) ci ON c.Code = ci.CountryCode "
                             + "GROUP BY c.Region";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -1132,10 +1136,10 @@ public class Methods {
                             + "c.Population - COALESCE(ci.CityPopulation, 0) AS rural_population "
                             + "FROM country c "
                             + "LEFT JOIN "
-                                + "(SELECT ct.CountryCode, "
-                                + "SUM(ct.Population) AS CityPopulation "
-                                + "FROM city ct "
-                                + "GROUP BY ct.CountryCode) ci ON c.Code = ci.CountryCode";
+                            + "(SELECT ct.CountryCode, "
+                            + "SUM(ct.Population) AS CityPopulation "
+                            + "FROM city ct "
+                            + "GROUP BY ct.CountryCode) ci ON c.Code = ci.CountryCode";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -1492,10 +1496,64 @@ public class Methods {
     }
     //------------------ END Method 32 ------------------------------
 
-    //-------------- Method 33 - All Countries by Population ------------------
-    //-------------- Angel Ochoa --------------------
 
+    /*  THIS WAS TEST LAB 7 DID NOT WORK
+    //-------------------------Connect to DB----------------------------
+    public void connectToDatabase(String[] args) {
+        // if no parameters connect locally
+        if (args.length < 1) {
+            connect("localhost:33060", 0);
+            // otherwise use connection string and delay passed as
+            // parameters from command line or DockerFile
+        } else {
+            connect(args[0], Integer.parseInt(args[1]));
+        }
+    }
+    //--------------------END Connect to DB 2------------------------
 
+    //-------------------------Connect to DB----------------------------
+    public void connect(String conString, int delay)
+    {
+        try
+        {
+            // Load Database driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        }
+        catch (ClassNotFoundException e)
+        {
+            System.out.println("Could not load SQL driver");
+            System.exit(-1);
+        }
+
+        int retries = 10;
+        for (int i = 0; i < retries; ++i)
+        {
+            System.out.println(BLUE + "Connecting to database..." + RESET);
+            try
+            {
+                // Wait a bit for db to start
+                Thread.sleep(delay);
+                // Connect to database world in world-db
+                con = DriverManager.getConnection("jdbc:mysql://" +conString
+                        + "world-db:3306/world?useSSL=false", "root", "p@sswdr00t");
+                //conn = con;
+                System.out.println(BLUE + "Successfully connected" + RESET);
+                break;
+            }
+            catch (SQLException sqle)
+            {
+                System.out.println(RED + "Failed to connect to database attempt " + Integer.toString(i) + RESET);
+                System.out.println(sqle.getMessage());
+            }
+            catch (InterruptedException ie)
+            {
+                System.out.println(RED + "Thread interrupted? Should not happen." + RESET);
+            }
+        }
+
+    }
+    //--------------------END Connect to DB------------------------
+    */
 
     //-------------------------Connect to DB----------------------------
     public void connect()
